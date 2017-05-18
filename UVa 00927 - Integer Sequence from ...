@@ -1,0 +1,41 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+//UVa 00927 - Integer Sequence from ... 
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner in = new Scanner(System.in);
+		int test_Case = in.nextInt();
+		int i,d,k,n,Sum;
+		for(int testcase = 0 ; testcase<test_Case ; testcase++){
+			 i=in.nextInt();
+			 ArrayList<Integer> list = new ArrayList<Integer>();
+			 for (int l = 0 ; l<=i;l++){
+    			 list.add(in.nextInt());
+			 }
+			 d = in.nextInt();
+			 k = in.nextInt();
+			 n = find_N(d,k);
+			 Sum = 0;
+			 for(int j = 0 ; j<=i;j++){
+			 	Sum+=(list.get(j))*(Math.pow(n, j));
+			 }
+			 System.out.println(Sum);
+		}
+		in.close();
+	}
+	 public static int find_N(int d, int k) throws Exception
+    {
+        int selected = 0 ;
+        int index = 1;
+        while(selected<k){
+        	selected+=(index*d);
+        	index++;
+        }
+        index--;
+        return index;
+    }
+	 
+}
