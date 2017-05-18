@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class UVa_01260_sales {
+
+	public static void main(String[] args) {
+		int n,sum;
+		Scanner in = new Scanner(System.in);
+		int T = in.nextInt();
+		for(int i= 0 ; i<T; i++){
+			n= in.nextInt();
+			int[] A = new int[n];
+			for(int j = 0 ; j<n;j++){
+				A[j]=in.nextInt();
+			}
+			sum=0;
+			for(int m=1 ; m<n;m++){
+				sum+=calcul_B(m, A);
+			}
+			System.out.println(sum);
+			
+			
+		}
+		in.close();
+	}
+	public static int calcul_B(int index,int[] arr){
+		int bi_1=0;
+		for(int temp = 0 ; temp < index; temp++){
+			
+			if (arr[temp]<=arr[index]){
+				bi_1++;
+			}
+		}
+		return bi_1;
+	}
+
+}
