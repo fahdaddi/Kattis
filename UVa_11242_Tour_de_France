@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class UVa_11242_Tour_de_France {
+
+	public static void main(String[] args) {
+		
+		int[] f_arr,r_arr;
+		int i;
+		int f,r,m;
+		double temp,spreadmax,spread;
+		Scanner in = new Scanner(System.in);
+		f = in.nextInt();
+		while(f!=0){
+			f_arr= new int[f];
+			r=in.nextInt();
+			r_arr = new int[r];
+			for(i=0 ; i<f;i++){
+				f_arr[i]=in.nextInt();
+			}
+			for(i=0 ; i<f;i++){
+				r_arr[i]=in.nextInt();
+			}
+			ArrayList<Double> list = new ArrayList<Double>(r*f);
+			for(i=0;i<f;i++){
+				for(int j = 0 ; j<r;j++){
+					temp=r_arr[j]/f_arr[i];
+					list.add(temp);
+				//	System.out.print(temp+ " ");
+				}
+			}
+			Collections.sort(list);
+			m = 1;
+			spreadmax=-1;
+			spread=0;
+			while (list.size() > m) {
+				spread = list.get(m)/list.get(m-1);
+				if(spread>spreadmax){
+					spreadmax=spread;
+				}
+				m++;
+			}
+			System.out.println(spreadmax);
+			f=in.nextInt();
+		}
+		in.close();
+	}
+
+}
